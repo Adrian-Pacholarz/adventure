@@ -2,7 +2,7 @@
 import inventory
 import player_character
 import characters
-#import combat
+import combat
 import random
 # global variables------------------------
 INVENTORY = {}
@@ -59,6 +59,7 @@ random_place = random.choice(list(rooms.keys()))
 ghost = {
     'room:': random_place
 }
+
 
 def ask_riddle():
     print("Who is the best funny actor in the world?")
@@ -120,6 +121,7 @@ def main():
     
         ghost_movement()
 
+
 def get_command():
     print()
     return input('> ')
@@ -144,6 +146,8 @@ def ghost_movement():
     if player['room'] == ghost['room']:
         character = characters.characters["ghost"]
         print(character["description"])
+        print("BEGIN COMBAT")
+        combat.combat(player_character.player_character, characters.characters["ghost"])
 
 
 if __name__ == '__main__':
