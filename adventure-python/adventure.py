@@ -71,8 +71,7 @@ ghost = {
     'room:': random_place
 }
 
-
-def open_door(playing=True):
+def open_door(playing = True):
     if "gold key" in INVENTORY:
         print("You win!!!")
         playing = False
