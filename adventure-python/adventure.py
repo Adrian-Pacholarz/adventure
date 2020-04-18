@@ -2,19 +2,14 @@
 import inventory
 import player_character
 import characters
-import combat
-
+#import combat
+import random
 # global variables------------------------
 INVENTORY = {}
-PLAYER_STATUS
+#PLAYER_STATUS
 
 player = {
     'room': 'outside',
-}
-
-
-ghost = {
-    'room': 'cave',
 }
 
 rooms = {
@@ -60,6 +55,10 @@ rooms = {
     }
 }
 
+random_place = random.choice(list(rooms.keys()))
+ghost = {
+    'room:': random_place
+}
 
 def ask_riddle():
     print("Who is the best funny actor in the world?")
@@ -72,8 +71,9 @@ def ask_riddle():
         print("Answer is incorrect! You are kick up on the outside.")
 
 
-def if player['room'] == ghost['room']:
+#def if player['room'] == ghost['room']:
     pass
+
 
 
 def main():
@@ -114,9 +114,11 @@ def main():
                     print("Bag is empty!")
             else:
                 print(f'Unrecognized command: {command}')
+            
         except KeyError:
             print(f'There is nothing there, current location is still: {player["room"]}')
-
+    
+        ghost_movement()
 
 def get_command():
     print()
@@ -132,6 +134,16 @@ def describe_room():
     print(room["movements"])
     if room["items"]:
         print(f'The following items on the ground: {room["items"]}')
+
+
+def ghost_movement():
+    random_place = random.choice(list(rooms.keys()))
+    ghost = {
+            'room': random_place
+            }
+    if player['room'] == ghost['room']:
+        character = characters.characters["ghost"]
+        print(character["description"])
 
 
 if __name__ == '__main__':
