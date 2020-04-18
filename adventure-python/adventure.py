@@ -3,6 +3,7 @@ import player_character
 import characters
 import combat
 import random
+import terminal_view
 # global variables------------------------
 INVENTORY = {}
 # PLAYER_STATUS
@@ -146,6 +147,8 @@ def main():
                     inventory.print_table(INVENTORY)
             elif command in [ 'help', 'h']:
                 get_help()
+            elif command in ['status']:
+                terminal_view.print_table(player_character.player_character)
             else:
                 print(f'Unrecognized command: {command}')
             
