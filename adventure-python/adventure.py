@@ -1,11 +1,20 @@
 # import termcolor
 import inventory
+import player_character
+import characters
+import combat
 
 # global variables------------------------
 INVENTORY = {}
+PLAYER_STATUS
 
 player = {
     'room': 'outside',
+}
+
+
+ghost = {
+    'room': 'cave',
 }
 
 rooms = {
@@ -61,6 +70,10 @@ def ask_riddle():
     else:
         player['room'] = "outside"
         print("Answer is incorrect! You are kick up on the outside.")
+
+
+def if player['room'] == ghost['room']:
+    pass
 
 
 def main():
