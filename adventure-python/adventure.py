@@ -1,4 +1,4 @@
-
+import termcolor
 
 player = {
     'room': 'outside',
@@ -8,6 +8,7 @@ rooms = {
     "outside": {
         "title": "Outside",
         "description": "You are standing outside of a huge cave entrance.",
+        "movemnets": "norht"
     },
     "cave": {
         "title": "Cave",
@@ -26,6 +27,14 @@ def main():
         elif command in ['quit', 'q']:
             print('Bye!')
             playing = False
+        elif command in ['north',  'n']:
+            pass
+        elif command in ['south', 's']:
+            pass
+        elif command in ['east', 'e']:
+            pass
+        elif command in [ 'west', 'w']:
+            pass
         else:
             print(f'Unrecognized command: {command}')
 
