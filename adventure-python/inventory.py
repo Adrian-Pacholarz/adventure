@@ -67,7 +67,7 @@ def remove_from_inventory(inventory, removed_items):
     return inventory
 
 
-def import_inventory(inventory, filename = 'inventory.csv'):
+def import_inventory(inventory, filename='inventory.csv'):
     """Import new inventory items from a CSV file.
 
     Args:
@@ -111,7 +111,7 @@ def save_item(item, qty, filename):
         qty = qty - 1
 
 
-def export_inventory(inventory, filename = "export_inventory.csv"):
+def export_inventory(inventory, filename="inventory.csv"):
     """Export the inventory into a CSV file.
     
     Args:

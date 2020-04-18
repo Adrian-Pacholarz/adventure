@@ -1,4 +1,4 @@
-#import termcolor
+# import termcolor
 import inventory
 
 # global variables------------------------
