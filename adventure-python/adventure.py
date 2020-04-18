@@ -34,7 +34,8 @@ rooms = {
         "south": "cave",
         "east": "tunnel",
         "west": "catacombs",
-        "movements": "There are the following exits: south, east, west",
+        "north": "dungeons",
+        "movements": "There are the following exits: north, south, east, west",
         "items": ["sword"],
     },
     "catacombs": {
