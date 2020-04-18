@@ -6,7 +6,7 @@ import combat
 import random
 # global variables------------------------
 INVENTORY = {}
-#PLAYER_STATUS
+# PLAYER_STATUS
 
 player = {
     'room': 'outside',
@@ -70,9 +70,8 @@ ghost = {
     'room:': random_place
 }
 
-<<<<<<< HEAD
-=======
-def open_door(playing = True):
+
+def open_door(playing=True):
     if "gold key" in INVENTORY:
         print("You win!!!")
         playing = False
@@ -80,6 +79,7 @@ def open_door(playing = True):
         print("You don't have a key")
         player['room'] = "outside"
     return playing
+
 
 def get_help():
     print("HELP MENU:")
@@ -94,7 +94,6 @@ def get_help():
     for help in help_option:
         print(f"    {help}")
 
->>>>>>> cd7733a9fc2e3dc315dc6db3fea5124af6236220
 
 def ask_riddle():
     print("Who is the best funny actor in the world?")
@@ -107,9 +106,8 @@ def ask_riddle():
         print("Answer is incorrect! You are kick up on the outside.")
 
 
-#def if player['room'] == ghost['room']:
+# def if player['room'] == ghost['room']:
     pass
-
 
 
 def main():

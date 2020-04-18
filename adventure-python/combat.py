@@ -11,17 +11,16 @@ def combat(player_character, enemy_character):
         now_moving = "enemy"
     while enemy_character["current_hp"] >= 0 and player_character["current_hp"] >= 0:
 
-
         if now_moving == "player":
             enemy_character["current_hp"] = enemy_character["current_hp"] - player_character["current_attack"]
-            # print(player_character["current_hp"])
-            # print(enemy_character["current_hp"])
+            print("You attack your enemy. Your enemy remaining hp is:", end=" ")
+            print(enemy_character["current_hp"])
             now_moving = "enemy"
 
         elif now_moving == "enemy":
             player_character["current_hp"] = player_character["current_hp"] - enemy_character["current_attack"]
-            # print(player_character["current_hp"])
-            # print(enemy_character["current_hp"])
+            print("Your enemy atack you. Your remaining hp is:", end=" ")
+            print(player_character["current_hp"])
             now_moving = "player"
 
     if enemy_character["current_hp"] <= 0:
