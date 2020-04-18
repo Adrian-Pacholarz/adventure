@@ -1,4 +1,3 @@
-# import termcolor
 import inventory
 import player_character
 import characters
@@ -6,7 +5,7 @@ import combat
 import random
 # global variables------------------------
 INVENTORY = {}
-#PLAYER_STATUS
+# PLAYER_STATUS
 
 player = {
     'room': 'outside',
@@ -71,7 +70,8 @@ ghost = {
     'room:': random_place
 }
 
-def open_door(playing = True):
+
+def open_door(playing=True):
     if "gold key" in INVENTORY:
         print("You win!!!")
         playing = False
@@ -79,6 +79,7 @@ def open_door(playing = True):
         print("You don't have a key")
         player['room'] = "outside"
     return playing
+
 
 def get_help():
     print("HELP MENU:")
@@ -105,9 +106,8 @@ def ask_riddle():
         print("Answer is incorrect! You are kick up on the outside.")
 
 
-#def if player['room'] == ghost['room']:
+# def if player['room'] == ghost['room']:
     pass
-
 
 
 def main():
