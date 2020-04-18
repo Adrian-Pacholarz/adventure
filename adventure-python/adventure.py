@@ -1,4 +1,8 @@
 #import termcolor
+import inventory
+
+# global variables------------------------
+INVENTORY = {}
 
 player = {
     'room': 'outside',
@@ -44,6 +48,8 @@ rooms = {
 
 
 def main():
+    # inventory.import_inventory(INVENTORY)
+    # inventory.print_table(INVENTORY)
     describe_room()
     playing = True
     while playing:
