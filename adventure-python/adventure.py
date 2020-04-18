@@ -2,7 +2,7 @@
 import inventory
 import player_character
 import characters
-#import combat
+import combat
 import random
 # global variables------------------------
 INVENTORY = {}
@@ -71,6 +71,8 @@ ghost = {
     'room:': random_place
 }
 
+<<<<<<< HEAD
+=======
 def open_door(playing = True):
     if "gold key" in INVENTORY:
         print("You win!!!")
@@ -93,6 +95,7 @@ def get_help():
     for help in help_option:
         print(f"    {help}")
 
+>>>>>>> cd7733a9fc2e3dc315dc6db3fea5124af6236220
 
 def ask_riddle():
     print("Who is the best funny actor in the world?")
@@ -156,6 +159,7 @@ def main():
         if player['room'] == 'secret room':
             playing = open_door()
 
+
 def get_command():
     print()
     return input('> ')
@@ -180,6 +184,8 @@ def ghost_movement():
     if player['room'] == ghost['room']:
         character = characters.characters["ghost"]
         print(character["description"])
+        print("BEGIN COMBAT")
+        combat.combat(player_character.player_character, characters.characters["ghost"])
 
 
 if __name__ == '__main__':
