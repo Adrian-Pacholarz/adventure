@@ -52,13 +52,46 @@ rooms = {
         "north": "tunnel",
         "movements": "There are the following exits: west, north",
         "items": [],
-    }
+    },
+    "dungeons": {
+        "title": "Dungeons",
+        "description": "You'll never get out of the dungeons",
+       "south": "secret room",
+        "east": "dungeons",
+        "west": "dungeons",
+        "north": "dungeons",
+        "movements": "There are the following exits: north, south, east, west",
+        "items": [],
+    },
 }
 
 random_place = random.choice(list(rooms.keys()))
 ghost = {
     'room:': random_place
 }
+
+def open_door(playing = True):
+    if "gold key" in INVENTORY:
+        print("You win!!!")
+        playing = False
+    else:
+        print("You don't have a key")
+        player['room'] = "outside"
+    return playing
+
+def get_help():
+    print("HELP MENU:")
+    help_option = ("look/l - look up around",
+                    "north/n - go to north",
+                    "south/s - go to south",
+                    "east/e - go to east",
+                    "west/w - go to west",
+                    "get/g - add item to you bag",
+                    "bag/b - bag preview",
+                    "quit/q - quit the game")
+    for help in help_option:
+        print(f"    {help}")
+
 
 def ask_riddle():
     print("Who is the best funny actor in the world?")
@@ -110,8 +143,8 @@ def main():
             elif command in [ 'bag', 'b']:
                 if INVENTORY:
                     inventory.print_table(INVENTORY)
-                else:
-                    print("Bag is empty!")
+            elif command in [ 'help', 'h']:
+                get_help()
             else:
                 print(f'Unrecognized command: {command}')
             
@@ -119,6 +152,8 @@ def main():
             print(f'There is nothing there, current location is still: {player["room"]}')
     
         ghost_movement()
+        if player['room'] == 'secret room':
+            playing = open_door()
 
 def get_command():
     print()
