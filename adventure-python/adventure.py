@@ -13,14 +13,16 @@ rooms = {
         "title": "Outside",
         "description": "You are standing outside of a huge cave entrance.",
         "north": "cave",
-        "movements": "There are the following exits: north"
+        "movements": "There are the following exits: north",
+        "items": [],
     },
     "cave": {
         "title": "Cave",
         "description": "You're in a cave.",
         "south": "outside",
         "north": "room1",
-        "movements": "There are the following exits: south, north"
+        "movements": "There are the following exits: south, north",
+        "items": [],
     },
     "room1": {
         "title": "Room One",
@@ -28,23 +30,37 @@ rooms = {
         "south": "cave",
         "east": "tunnel",
         "west": "catacombs",
-        "movements": "There are the following exits: south, east, west"
+        "movements": "There are the following exits: south, east, west",
+        "items": ["sword"],
     },
     "catacombs": {
         "title": "Entrance to catacombs",
         "description": "You're in an entrace to catacombs with many options to go further",
         "east": "room1",
-        "west": "cave", # it goes back there
-        "movements": "There are the following exits: east, west"
+        "west": "outside", # it goes back there
+        "movements": "There are the following exits: east, west",
+        "items": ["gold key"],
     },
     "tunnel": {
         "title": "Tunnel",
         "description": "You're in a small passage",
         "west": "cave",
         "north": "tunnel",
-        "movements": "There are the following exits: west, north"
+        "movements": "There are the following exits: west, north",
+        "items": [],
     }
 }
+
+
+def ask_riddle():
+    print("Who is the best funny actor in the world?")
+    if get_command() == "Jim Carrey":
+        inventory.add_to_inventory(INVENTORY, rooms[player['room']]["items"])
+        print(f"You get item {rooms[player['room']]['items']}")
+        rooms[player['room']]["items"] = []
+    else:
+        player['room'] = "outside"
+        print("Answer is incorrect! You are kick up on the outside.")
 
 
 def main():
@@ -72,6 +88,17 @@ def main():
             elif command in [ 'west', 'w']:
                 player['room'] = rooms[player['room']]["west"]
                 describe_room()
+            elif command in [ 'get', 'g']:
+                if player['room'] == 'catacombs':
+                    ask_riddle()
+                else:
+                    inventory.add_to_inventory(INVENTORY, rooms[player['room']]["items"])
+                    rooms[player['room']]["items"] = []
+            elif command in [ 'bag', 'b']:
+                if INVENTORY:
+                    inventory.print_table(INVENTORY)
+                else:
+                    print("Bag is empty!")
             else:
                 print(f'Unrecognized command: {command}')
         except KeyError:
@@ -90,6 +117,8 @@ def describe_room():
     print()
     print(room['description'])
     print(room["movements"])
+    if room["items"]:
+        print(f'The following items on the ground: {room["items"]}')
 
 
 if __name__ == '__main__':
